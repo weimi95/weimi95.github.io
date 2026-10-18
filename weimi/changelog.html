@@ -131,7 +131,7 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 <main>
   <a class="back" href="/weimi/">← 返回官网首页</a>
   <header>
-    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.0.69</span></h1>
+    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.0.70</span></h1>
     <p class="sub">
       按时间倒序记录每一版改了什么，方便日后回看「某个功能是哪一版加的」。
       下载最新版见<a href="/weimi/">官网首页</a>。
@@ -140,6 +140,12 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 
   <ul class="log">
     <li class="current">
+      <span class="ver">v1.0.70</span><span class="date">2026-10-18</span>
+      <ul class="changes">
+        <li><strong>飞传设备合并显示修复</strong>：开着 LocalSend 兼容时，同一台设备仍可能出现两条（一条「微密+LocalSend」+ 一条纯 LocalSend），个别情况下甚至只剩 LocalSend 条目——根因是合并后的微密条目已带链路，后续每条 LocalSend 广播都又新建了一条独立设备。现在微密设备永远优先，LocalSend 只作为链路挂在微密条目上，任何时序下同 IP 最多一条；手机端微密广播因省电延迟时，合并条目也不会被清掉</li>
+      </ul>
+    </li>
+    <li>
       <span class="ver">v1.0.69</span><span class="date">2026-10-18</span>
       <ul class="changes">
         <li><strong>双击 Ctrl 秒开浮窗</strong>：修复冷启路径约 0.5s 延迟——弹窗会话不再串行跑注册表写入、守护进程握手、飞传启动、索引加载等一整套常驻初始化，只保留必要项；UI 常驻时呼出也跳过了重复的窗口几何下发。按键检测本身 30ms 轮询不变</li>
