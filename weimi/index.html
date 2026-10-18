@@ -281,6 +281,29 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px 4rem; }
   margin-top: 1.2rem;
 }
 
+.shot-phone {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+.shot-group-label {
+  margin: 1.8rem 0 0.9rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.shot-group-label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(100deg, var(--accent1), var(--accent2));
+}
+
 /* ===== 三步上手 ===== */
 .steps {
   display: grid;
@@ -461,7 +484,8 @@ footer a:hover { color: var(--accent3); }
 
     <section id="screenshots">
       <h2 class="section-title reveal">界面预览</h2>
-      <p class="shots-sub reveal">Windows 客户端实拍 · v1.0.69，手机端布局另有优化</p>
+      <p class="shots-sub reveal">Windows 电脑端与 Android 手机端实拍 · v1.0.69</p>
+      <p class="shot-group-label reveal">电脑端 · Windows</p>
       <div class="shot-grid">
 
         <figure class="shot reveal">
@@ -505,6 +529,30 @@ footer a:hover { color: var(--accent3); }
         <figure class="shot reveal">
           <img src="shots/web-dark.png" alt="微密飞传网页版暗色界面：文件直存接收目录" loading="lazy">
           <figcaption><strong>网页版 · 暗色</strong>电脑处于托盘模式时，文件直接保存到接收目录，数据不出局域网</figcaption>
+        </figure>
+
+      </div>
+      <p class="shot-group-label reveal">手机端 · Android</p>
+      <div class="shot-phone">
+
+        <figure class="shot reveal">
+          <img src="shots/phone-main.jpg" alt="手机端主界面：全盘搜索、常用目录与保险箱" loading="lazy">
+          <figcaption><strong>主界面</strong>常用目录随手机存储自动列出，保险箱常驻「我的目录」</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/phone-menu.jpg" alt="手机端右上角菜单：视图切换与缩略图档位" loading="lazy">
+          <figcaption><strong>视图与缩略图</strong>列表 / 宫格 / 瀑布流，缩略图小中大三档随手切换</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/phone-settings.jpg" alt="手机端飞传设置：网页快传、可被发现、LocalSend 兼容" loading="lazy">
+          <figcaption><strong>飞传设置</strong>与电脑端同一套开关：网页快传、可被发现、LocalSend 兼容</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/phone-transfer.jpg" alt="手机端飞传页：附近设备只显示电脑一条" loading="lazy">
+          <figcaption><strong>微密飞传</strong>同机装两个 App 也只显示一台设备，不会出现重复条目</figcaption>
         </figure>
 
       </div>
