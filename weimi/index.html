@@ -239,6 +239,48 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px 4rem; }
 .dl-note a { color: var(--accent1); text-decoration: none; }
 .dl-note a:hover { color: var(--accent3); }
 
+/* ===== 界面预览 ===== */
+.shots-sub {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: -0.6rem 0 1.6rem;
+}
+.shot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+.shot {
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+.shot:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 16px 44px -18px rgba(34, 211, 238, 0.35);
+}
+.shot img { display: block; width: 100%; height: auto; }
+.shot figcaption {
+  padding: 0.78rem 1rem 0.9rem;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+.shot figcaption strong {
+  display: block;
+  color: var(--fg);
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+.shot-web {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
 /* ===== 三步上手 ===== */
 .steps {
   display: grid;
@@ -308,6 +350,7 @@ footer a:hover { color: var(--accent3); }
     <nav class="hero-links">
       <a class="btn" href="https://pan.quark.cn/s/ba97115eccfc" target="_blank" rel="noopener">下载最新版</a>
       <a class="btn ghost" href="#features">看看功能</a>
+      <a class="btn ghost" href="#screenshots">看看界面</a>
       <a class="btn ghost" href="changelog.html">更新日志</a>
     </nav>
     <div class="badges">
@@ -412,6 +455,57 @@ footer a:hover { color: var(--accent3); }
           <p class="desc">代码全量开源（Apache 2.0 协议），构建过程公开可查。加密工具不看代码怎么放心？</p>
           <div class="tags"><span>Apache 2.0</span><span>开源免费</span></div>
         </article>
+
+      </div>
+    </section>
+
+    <section id="screenshots">
+      <h2 class="section-title reveal">界面预览</h2>
+      <p class="shots-sub reveal">Windows 客户端实拍 · v1.0.69，手机端布局另有优化</p>
+      <div class="shot-grid">
+
+        <figure class="shot reveal">
+          <img src="shots/main.png" alt="微密文件主界面：全盘搜索、常用目录与保险箱入口" loading="lazy">
+          <figcaption><strong>主界面</strong>搜索框直达全盘文件，常用目录随手浏览，保险箱单独成区</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/popup.png" alt="双击 Ctrl 呼出的快捷浮窗：常用软件与网址网格" loading="lazy">
+          <figcaption><strong>快捷浮窗</strong>任意界面双击 Ctrl 呼出，常用软件 / 网址一屏直达，顺手搜文件</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/transfer.png" alt="微密飞传页：本机信息、网页版入口与附近设备" loading="lazy">
+          <figcaption><strong>微密飞传</strong>附近设备同机装两个 App 也合并显示为一条，标注「微密 + LocalSend」</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/settings-lan.png" alt="飞传设置：网页快传、可被发现、LocalSend 兼容与接收确认" loading="lazy">
+          <figcaption><strong>飞传设置</strong>网页快传开关、LocalSend 兼容总开关、未信任设备请求确认时限</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/settings-search.png" alt="搜索设置：快捷浮窗、失焦收起、索引与排除文件夹" loading="lazy">
+          <figcaption><strong>搜索设置</strong>浮窗开关与失焦收起、结果数量、索引文件夹 / 排除文件夹</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/settings-general.png" alt="通用与保险箱设置：切后台上锁、主密码、备份密码库" loading="lazy">
+          <figcaption><strong>通用与保险箱</strong>切后台即上锁、修改主密码、备份密码库、开机自启与省内存模式</figcaption>
+        </figure>
+
+      </div>
+      <div class="shot-web">
+
+        <figure class="shot reveal">
+          <img src="shots/web-light.png" alt="微密飞传网页版亮色界面：选择设备、发送文件或文本" loading="lazy">
+          <figcaption><strong>网页版 · 亮色</strong>同一 WiFi 浏览器打开即用，选设备发文件 / 发文本，免安装</figcaption>
+        </figure>
+
+        <figure class="shot reveal">
+          <img src="shots/web-dark.png" alt="微密飞传网页版暗色界面：文件直存接收目录" loading="lazy">
+          <figcaption><strong>网页版 · 暗色</strong>电脑处于托盘模式时，文件直接保存到接收目录，数据不出局域网</figcaption>
+        </figure>
 
       </div>
     </section>
