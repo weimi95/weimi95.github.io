@@ -131,7 +131,7 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 <main>
   <a class="back" href="/weimi/">← 返回官网首页</a>
   <header>
-    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.0.70</span></h1>
+    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.1.00</span></h1>
     <p class="sub">
       按时间倒序记录每一版改了什么，方便日后回看「某个功能是哪一版加的」。
       下载最新版见<a href="/weimi/">官网首页</a>。
@@ -140,6 +140,27 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 
   <ul class="log">
     <li class="current">
+      <span class="ver">v1.1.00</span><span class="date">2026-10-20</span>
+      <ul class="changes">
+        <li><strong>文件夹加密（单文件归档）</strong>：把整个文件夹打包成一个加密归档（扩展名 <code>.wemi</code>，容器格式 <code>WEMI_FARC</code> v1），用同一个口令保护；归档内的<strong>文件名与目录结构也加密</strong>（AES-256-GCM），外人拿到归档看不到里面有什么</li>
+        <li><strong>逐文件独立分块</strong>：归档内每个文件独立加密、大文件自动分块（桌面 256MB / 手机 128MB），单个文件损坏不会影响其余文件解包，且断点可续</li>
+        <li><strong>选择性解包</strong>：解密归档时可先「列出内容」，勾选其中部分文件单独解出，不必整包解压</li>
+        <li><strong>全链路入口</strong>：电脑端把文件夹拖进窗口即打包；手机端长按文件夹「加密文件夹」、点 <code>.wemi</code> 归档走解密/选择性解包；进度实时显示，底层复用 Rust 加密引擎（与单文件加密同一套 AES-256-GCM）</li>
+      </ul>
+    </li>
+    <li>
+      <span class="ver">v1.0.72</span><span class="date">2026-10-19</span>
+      <ul class="changes">
+        <li>例行发版：随「微密经典版（Win7/XP 客户端）」同期，主程序安装链路与启动稳定性加固</li>
+      </ul>
+    </li>
+    <li>
+      <span class="ver">v1.0.71</span><span class="date">2026-10-18</span>
+      <ul class="changes">
+        <li>APK 安装链路修复，文件管理交互顺手度对齐</li>
+      </ul>
+    </li>
+    <li>
       <span class="ver">v1.0.70</span><span class="date">2026-10-18</span>
       <ul class="changes">
         <li><strong>飞传设备合并显示修复</strong>：开着 LocalSend 兼容时，同一台设备仍可能出现两条（一条「微密+LocalSend」+ 一条纯 LocalSend），个别情况下甚至只剩 LocalSend 条目——根因是合并后的微密条目已带链路，后续每条 LocalSend 广播都又新建了一条独立设备。现在微密设备永远优先，LocalSend 只作为链路挂在微密条目上，任何时序下同 IP 最多一条；手机端微密广播因省电延迟时，合并条目也不会被清掉</li>
