@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>微密文件 · WeiMi File — 文件加密，简单可靠</title>
-<meta name="description" content="微密文件（WeiMi File）：跨平台文件加密工具，Flutter + Rust 加密引擎（AES-256-GCM），支持 Windows / macOS / Linux / Android，开源免费。">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
+<meta name="description" content="微密文件管理器（WeiMi）是原生渲染的 Windows 文件管理器：多标签多窗格、全盘索引搜索、空格快速预览、暂存盘、飞传、保险箱与文件加密。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📁</text></svg>">
 <style>
 :root {
   --bg: #07070c;
@@ -367,120 +367,103 @@ footer a:hover { color: var(--accent3); }
   </div>
 
   <header class="hero">
-    <p class="eyebrow">PRIVATE&nbsp;BY&nbsp;DEFAULT</p>
-    <h1 class="name">微密文件 <span class="grad">WeiMi</span></h1>
-    <p class="tagline">跨平台文件加密工具 · Rust 加密引擎（AES-256-GCM）· 加密之外，还能直接看</p>
+    <p class="eyebrow">WINDOWS&nbsp;FILE&nbsp;MANAGER</p>
+    <h1 class="name">微密文件管理器 <span class="grad">WeiMi</span></h1>
+    <p class="tagline">原生渲染的 Windows 文件管理器 · 多标签多窗格 · 全盘秒搜 · 空格预览 · 飞传 · 保险箱</p>
     <nav class="hero-links">
-      <a class="btn" href="https://pan.quark.cn/s/e60186a6d3ee" target="_blank" rel="noopener">下载最新版</a>
+      <a class="btn" href="#download">下载最新版</a>
+      <a class="btn ghost" href="help.html">使用手册</a>
       <a class="btn ghost" href="#features">看看功能</a>
       <a class="btn ghost" href="#screenshots">看看界面</a>
       <a class="btn ghost" href="changelog.html">更新日志</a>
     </nav>
     <div class="badges">
-      <span class="badge hl">v1.2.1</span>
-      <span class="badge">AES-256-GCM</span>
-      <span class="badge">Windows · macOS · Linux · Android</span>
-      <span class="badge">Apache 2.0 开源</span>
+      <span class="badge hl">v1.0.14</span>
+      <span class="badge">Windows 11 / 10（64 位）</span>
+      <span class="badge">原生渲染 · 启动快</span>
+      <span class="badge">约 12 MB 安装包</span>
     </div>
   </header>
 
   <main>
     <section id="features">
-      <h2 class="section-title reveal">核心功能</h2>
-      <div class="grid">
+    <h2 class="section-title reveal">核心功能</h2>
+    <div class="grid">
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">🔐</span>
-            <h3>硬核加密引擎 <span class="en">Rust</span></h3>
-          </div>
-          <p class="desc">加密核心用 Rust 编写、经 dart:ffi 桥接调用，AES-256-GCM 认证加密，密文被改动会直接校验失败，不静默出错。</p>
-          <div class="tags"><span>Rust</span><span>AES-256-GCM</span><span>dart:ffi</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">🗂️</span>
+          <h3>多标签与多窗格</h3>
+        </div>
+        <p class="desc">Ctrl+1..4 在单栏、左右分屏、上下分屏与四宫格之间切换；标签页可拖出成独立窗口，也能竖排在侧栏。每个文件夹记住自己的视图、排序与分组。</p>
+        <div class="tags"><span>四宫格</span><span>竖排标签</span><span>逐文件夹记忆</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">📦</span>
-            <h3>自有加密格式 <span class="en">.wemi</span></h3>
-          </div>
-          <p class="desc">新版统一打包为 .wemi 格式；老用户无缝过渡——旧 .kyl 加密文件照样能解密打开。</p>
-          <div class="tags"><span>.wemi</span><span>兼容 .kyl</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">🔍</span>
+          <h3>全盘索引搜索</h3>
+        </div>
+        <p class="desc">PulseIndex 服务维护全盘索引，边输边出结果；支持全拼与首字母，内容搜索覆盖代码、PDF 与 Office；Ctrl+Shift+F 高级搜索，Alt+Space 随时呼出。</p>
+        <div class="tags"><span>拼音搜索</span><span>内容搜索</span><span>Alt+Space</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">👁️</span>
-            <h3>内置查看器</h3>
-          </div>
-          <p class="desc">视频、图片、音频、文本、PDF 解密后不用导出第三方应用，在 App 内直接打开查看，看完即走不留痕迹。</p>
-          <div class="tags"><span>视频</span><span>图片</span><span>音频</span><span>文本</span><span>PDF</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">👁️</span>
+          <h3>空格快速预览</h3>
+        </div>
+        <p class="desc">按空格就能看：Markdown 排版、代码高亮、PDF 逐页、Office 与 EPUB 免装 Office、压缩包目录树、视频播放，PSD/AI/DWG 也有缩略图。悬停半秒弹出预览卡，空格展开。</p>
+        <div class="tags"><span>免打开</span><span>悬停卡片</span><span>格式最全</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">🗝️</span>
-            <h3>保险箱 <span class="en">Vault</span></h3>
-          </div>
-          <p class="desc">给重要文件再上一道锁：主密码 + 指纹解锁（Android/macOS），每个文件可设独立密码，箱内直接看、导出即解密。密码忘了有主密码兜底与批量补录。</p>
-          <div class="tags"><span>主密码</span><span>指纹解锁</span><span>独立文件密码</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">📌</span>
+          <h3>暂存盘与文本对比</h3>
+        </div>
+        <p class="desc">复制或剪切的文件先进左下角暂存盘，跨文件夹收集后一次落地，也能发送到设备；两个文件可对照位置、时间、大小与内容，F7 在差异间跳转。</p>
+        <div class="tags"><span>跨文件夹收集</span><span>内容对比</span><span>可撤销</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">📡</span>
-            <h3>微密飞传 <span class="en">LAN 互传</span></h3>
-          </div>
-          <p class="desc">同一 WiFi 下设备间直传文件/文本，不走服务器、不耗流量；支持文件夹整体发送，还能与开源的 LocalSend App 互收互发。电脑端双击 Ctrl 秒呼搜索浮窗。</p>
-          <div class="tags"><span>局域网直传</span><span>文件夹发送</span><span>LocalSend 互通</span><span>网页版</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">📡</span>
+          <h3>飞传 · 电脑手机直传</h3>
+        </div>
+        <p class="desc">同一局域网内电脑与手机互传文件与文字，不走服务器、不耗流量；把文件拖到托盘飞传区即发，支持文件夹整体发送，也能与开源的 LocalSend 互收互发。</p>
+        <div class="tags"><span>局域网直传</span><span>文字互发</span><span>LocalSend 互通</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">⌨️</span>
-            <h3>快捷启动浮窗 <span class="en">双击 Ctrl</span></h3>
-          </div>
-          <p class="desc">电脑上的效率入口：常用软件和网址一屏直达——拖入即添加、图标自动识别、Ctrl+1..9 秒开；输入关键词顺手全盘秒搜文件，搜到直接加密 / 解密 / 发送到手机，全程不跳主界面。</p>
-          <div class="tags"><span>快捷启动</span><span>全盘搜索</span><span>双击 Ctrl</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">🔐</span>
+          <h3>保险箱与文件加密</h3>
+        </div>
+        <p class="desc">主密码解锁的保险箱，文件也能单独加密为 .wemi；密码由 Windows 保护、只存本机，不上传、不写日志。加密后原文件可选择删除。</p>
+        <div class="tags"><span>保险箱</span><span>.wemi</span><span>只存本机</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">🗂️</span>
-            <h3>文件管理器</h3>
-          </div>
-          <p class="desc">常用目录（下载 / 文档 / 图片 / 相册 / 音乐 / 视频）折叠展开随手浏览，也支持添加自己的常用目录，加密选文件不用来回翻。</p>
-          <div class="tags"><span>常用目录</span><span>自定义目录</span><span>缩略图档位</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">🪟</span>
+          <h3>融入 Windows</h3>
+        </div>
+        <p class="desc">可设为默认文件管理器，接管文件夹、Win+E 与「打开文件所在位置」，随时一键还原；合并资源管理器右键菜单，开机静默启动到托盘。</p>
+        <div class="tags"><span>默认文件管理器</span><span>右键菜单</span><span>开机到托盘</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">💻</span>
-            <h3>全平台覆盖</h3>
-          </div>
-          <p class="desc">Windows / macOS / Linux / Android 四端齐发，一套加密格式走天下；桌面端还支持文件拖拽直接加密。</p>
-          <div class="tags"><span>Windows</span><span>macOS</span><span>Linux</span><span>Android</span></div>
-        </article>
+      <article class="card reveal">
+        <div class="card-head">
+          <span class="icon">⚙️</span>
+          <h3>增强包与自动更新</h3>
+        </div>
+        <p class="desc">ffmpeg 解码、图片与 RAW、AI 与 MCP 等组件按需下载安装，官网源直连、网盘镜像兜底；启动后自动检查新版，签名与安装包校验通过才更新。</p>
+        <div class="tags"><span>按需安装</span><span>双通道更新</span><span>签名校验</span></div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">🛡️</span>
-            <h3>省心细节</h3>
-          </div>
-          <p class="desc">关窗收后台只留约 10MB 守护进程继续跑飞传；热点网络防火墙一键放行；接收完成系统通知点击直达；加解密历史随时回看。</p>
-          <div class="tags"><span>后台省内存</span><span>防火墙助手</span><span>通知深链</span></div>
-        </article>
-
-        <article class="card reveal">
-          <div class="card-head">
-            <span class="icon">🔓</span>
-            <h3>开源 &amp; 免费使用</h3>
-          </div>
-          <p class="desc">代码全量开源（Apache 2.0 协议），构建过程公开可查。加密工具不看代码怎么放心？</p>
-          <div class="tags"><span>Apache 2.0</span><span>开源免费</span></div>
-        </article>
-
-      </div>
-    </section>
+    </div>
+  </section>
 
     <section id="screenshots">
       <h2 class="section-title reveal">界面预览</h2>
@@ -559,56 +542,54 @@ footer a:hover { color: var(--accent3); }
     </section>
 
     <section id="download">
-      <h2 class="section-title reveal">下载</h2>
-      <div class="dl-grid">
+    <h2 class="section-title reveal">下载</h2>
+    <p class="reveal">安装包按版本放在夸克网盘「微密文件管理器」目录，下载最新的 <code>WeiMiSetup-1.0.14.exe</code> 即可。</p>
+    <div class="hero-links reveal">
+      <a class="btn" href="https://pan.quark.cn/s/72d9720b074c" target="_blank" rel="noopener">打开夸克网盘下载</a>
+      <a class="btn ghost" href="help.html">使用手册</a>
+      <a class="btn ghost" href="changelog.html">更新日志</a>
+    </div>
+    <ul class="reveal">
+      <li>系统要求：Windows 11 / Windows 10（64 位）；Windows 8.1 兼容版在网盘同目录。</li>
+      <li>安装包由 GitHub Actions 在 windows-2022 上构建，更新清单随包发布并带签名。</li>
+      <li>升级无需卸载：直接运行新版安装包覆盖安装，设置、标签与索引保留。</li>
+    </ul>
+  </section>
 
-        <article class="card dl-card reveal">
-          <span class="icon">⚡</span>
-          <h3>夸克网盘 · 全平台安装包</h3>
-          <p class="desc">Android APK · Windows ZIP · macOS DMG · Linux TAR.GZ · SHA256 校验文件<br>国内下载速度更快，链接长期有效，新版本自动同步更新</p>
-          <a class="btn" href="https://pan.quark.cn/s/e60186a6d3ee" target="_blank" rel="noopener">打开夸克网盘下载</a>
-        </article>
-
-        <article class="card dl-card reveal">
-          <span class="icon">🖥️</span>
-          <h3>微密文件 · 经典版</h3>
-          <p class="desc">旧版电脑（Win7 / XP）专用客户端，32 位单文件<br>免安装 · 不需要 .NET / VC 运行库 · 加解密 + 飞传互收</p>
-          <a class="btn" href="https://pan.quark.cn/s/e60186a6d3ee" target="_blank" rel="noopener">下载经典版（Win7/XP）</a>
-        </article>
-
-      </div>
-      <p class="dl-note reveal">网盘文件夹长期有效，按版本分文件夹存放（v1.0.65 起），经典版安装包在网盘「legacy」文件夹，历史版本并存留档，随取随用。</p>
-    </section>
 
     <section id="howto">
-      <h2 class="section-title reveal">三步上手</h2>
-      <div class="steps">
-
-        <article class="card step reveal">
-          <span class="step-num">1</span>
-          <h3>选文件</h3>
-          <p class="desc">从文件管理器选要加密的文件，桌面端直接把文件拖进窗口也行。</p>
-        </article>
-
-        <article class="card step reveal">
-          <span class="step-num">2</span>
-          <h3>设密码加密</h3>
-          <p class="desc">设置加密密码，一键生成 .wemi 加密文件，原文件可按需处理。</p>
-        </article>
-
-        <article class="card step reveal">
-          <span class="step-num">3</span>
-          <h3>解密即看</h3>
-          <p class="desc">输入密码解密，视频 / 图片 / 音频 / 文本 / PDF 直接在 App 内查看。</p>
-        </article>
-
-      </div>
-    </section>
+    <h2 class="section-title reveal">三步上手</h2>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-head"><span class="icon">1️⃣</span><h3>装好就能用</h3></div>
+        <p class="desc">运行安装包，按向导完成安装；勾选 PulseIndex 索引服务即可搜索全盘文件与内容。</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-head"><span class="icon">2️⃣</span><h3>替换掉资源管理器</h3></div>
+        <p class="desc">「设置 → 启动与集成」里把微密设为默认文件管理器，文件夹、Win+E 与「打开文件所在位置」都会交给它，随时可关闭还原。</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-head"><span class="icon">3️⃣</span><h3>两个高频动作</h3></div>
+        <p class="desc">选中文件按空格预览；Alt+Space 随时搜文件。要传手机就点标题栏飞传，同一 Wi-Fi 下直接发。</p>
+      </article>
+    </div>
+    <p class="reveal">更细的说明见 <a href="help.html">使用手册</a>。</p>
+  </section>
   </main>
 
+  <section id="app">
+    <h2 class="section-title reveal">还有：微密加密 App</h2>
+    <p class="reveal">同一款微密在 Android 与桌面端提供文件加密与保险箱：.wemi 格式、指纹解锁、内置查看器，并与电脑端飞传互通。</p>
+    <div class="hero-links reveal">
+      <a class="btn ghost" href="app.html">了解微密加密 App</a>
+      <a class="btn ghost" href="app-changelog.html">App 更新日志</a>
+    </div>
+  </section>
+
   <footer>
-    <p>© <span id="year"></span> 微密文件 WeiMi</p>
+    <p>© <span id="year"></span> 微密文件管理器 WeiMi</p>
     <p class="foot-links">
+      <a href="help.html">使用手册</a> ·
       <a href="changelog.html">更新日志</a> ·
       <a href="https://weimi95.github.io/" target="_blank" rel="noopener">阿伟小站</a> ·
       <a href="https://weimi95.github.io/weitu/" target="_blank" rel="noopener">微图相册管家</a> ·
