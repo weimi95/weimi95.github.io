@@ -3,315 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
-<title>微密文件 · 更新日志</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
+<title>微密文件管理器 · 更新日志</title>
+<meta name="description" content="微密文件管理器 WeiMi 版本更新日志：1.0.7 至今的修复与改进记录。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📁</text></svg>">
 <style>
-/* 自包含单页：不引任何外部资源，断网也能开。
-   配色跟随官网首页（暗色极光风），主色用官网的青。 */
 :root {
-  --accent: 34, 211, 238;
-  --bg: #07070c;
-  --card: rgba(255, 255, 255, 0.045);
-  --text: #e8e9f0;
-  --muted: #9aa0b4;
-  --line: rgba(255, 255, 255, 0.09);
+  --bg: #f7f8fa; --fg: #1b1e24; --fg2: #5b616e; --card: #ffffff;
+  --stroke: rgba(0,0,0,.08); --accent: #2f6fed; --accent2: #22a06b; --code: #eef1f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14161a; --fg: #e8eaf0; --fg2: #a5abb8; --card: #1c1f25;
+          --stroke: rgba(255,255,255,.1); --accent: #6f9dff; --accent2: #4ad295; --code: #23272e; }
 }
 * { box-sizing: border-box; }
 body {
-  margin: 0;
-  padding: 2.8rem 1.25rem 4rem;
-  background:
-    radial-gradient(120% 120% at 50% 0%, #0c0c16 0%, #07070c 60%);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.75 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
 }
-main { max-width: 46rem; margin: 0 auto; }
-a { color: rgb(var(--accent)); text-decoration: none; }
-a:hover { text-decoration: underline; }
-header { margin-bottom: 2.4rem; }
-h1 {
-  margin: 0 0 0.4rem;
-  font-size: 1.7rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
+header.top {
+  position: sticky; top: 0; z-index: 9; backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--stroke);
 }
-h1 .grad {
-  background: linear-gradient(100deg, #22d3ee, #a855f7 55%, #f472b6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.badge {
-  display: inline-block;
-  margin-left: 0.55rem;
-  padding: 0.12rem 0.68rem;
-  border-radius: 1rem;
-  background: rgb(var(--accent) / 0.12);
-  border: 1px solid rgb(var(--accent) / 0.35);
-  color: rgb(var(--accent));
-  font-size: 0.84rem;
-  font-weight: 600;
-  vertical-align: 0.14em;
-}
-.sub { margin: 0; color: var(--muted); font-size: 0.92rem; }
-.back { display: inline-block; margin-bottom: 1.4rem; font-size: 0.9rem; }
-
-/* 时间线：左侧竖线 + 圆点，纯 CSS */
-.log {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 1.6rem;
-  border-left: 2px solid var(--line);
-}
-.log > li { position: relative; padding: 0 0 1.9rem; }
-.log > li::before {
-  content: "";
-  position: absolute;
-  left: -1.6rem;
-  top: 0.62rem;
-  width: 0.7rem;
-  height: 0.7rem;
-  margin-left: -0.36rem;
-  border-radius: 50%;
-  background: var(--muted);
-  box-shadow: 0 0 0 3px var(--bg);
-}
-.log > li.current::before { background: rgb(var(--accent)); }
-.ver { font-weight: 700; font-size: 1.05rem; }
-.log > li.current .ver { color: rgb(var(--accent)); }
-.date {
-  margin-left: 0.55rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-  font-weight: 400;
-}
-ul.changes { margin: 0.45rem 0 0; padding-left: 1.15rem; }
-ul.changes li { margin: 0.16rem 0; }
-ul.changes li::marker { color: var(--muted); }
-strong { font-weight: 600; }
-code {
-  padding: 0.1em 0.36em;
-  border-radius: 0.3em;
-  background: rgb(var(--accent) / 0.12);
-  color: rgb(var(--accent));
-  font-size: 0.88em;
-  font-family: ui-monospace, Consolas, "Courier New", monospace;
-  word-break: break-all;
-}
-section.credits {
-  margin-top: 0.5rem;
-  padding: 1.2rem 1.4rem;
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: var(--card);
-}
-section.credits h2 { margin: 0 0 0.6rem; font-size: 1rem; font-weight: 700; }
-section.credits dl {
-  margin: 0;
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 0.3rem 1.1rem;
-  font-size: 0.92rem;
-}
-section.credits dt { color: var(--muted); white-space: nowrap; }
-section.credits dd { margin: 0; }
-footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
-@media (max-width: 480px) {
-  section.credits dl { grid-template-columns: 1fr; gap: 0.1rem; }
-  section.credits dd { margin-bottom: 0.55rem; }
-}
+.bar { max-width: 980px; margin: 0 auto; padding: 14px 20px; display: flex;
+  align-items: center; gap: 14px; flex-wrap: wrap; }
+.bar b { font-size: 17px; }
+.bar a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.bar .sp { flex: 1; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
+h1 { font-size: 30px; line-height: 1.35; margin: 8px 0 6px; }
+h2 { font-size: 21px; margin: 38px 0 10px; padding-bottom: 8px;
+     border-bottom: 1px solid var(--stroke); }
+h3 { font-size: 17px; margin: 22px 0 8px; }
+p { margin: 10px 0; color: var(--fg); }
+ul, ol { margin: 10px 0; padding-left: 24px; }
+li { margin: 6px 0; }
+hr { border: 0; border-top: 1px solid var(--stroke); margin: 30px 0; }
+a { color: var(--accent); }
+code { background: var(--code); padding: 1px 6px; border-radius: 6px;
+  font-family: "Cascadia Mono", Consolas, monospace; font-size: .92em; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 15px; }
+th, td { border: 1px solid var(--stroke); padding: 9px 12px; text-align: left; vertical-align: top; }
+th { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--fg) 3%, transparent); }
+.toc { background: var(--card); border: 1px solid var(--stroke); border-radius: 14px;
+  padding: 16px 22px; margin: 22px 0 8px; }
+.toc h2 { border: 0; margin: 0 0 8px; font-size: 16px; padding: 0; }
+.toc ol { columns: 2; column-gap: 26px; padding-left: 20px; margin: 0; }
+.toc li { font-size: 14px; }
+@media (max-width: 680px) { .toc ol { columns: 1; } h1 { font-size: 24px; } }
+footer { border-top: 1px solid var(--stroke); margin-top: 50px; padding: 22px 0 0;
+  color: var(--fg2); font-size: 14px; }
+</style>
+<style>
+.rel { margin-bottom: 10px; }
+.rel h2 { display: flex; align-items: center; gap: 10px; }
+.badge { font-size: 12px; font-weight: 500; padding: 2px 9px; border-radius: 999px;
+  border: 1px solid var(--stroke); color: var(--fg2); }
+.badge.hl { color: #fff; background: var(--accent); border-color: transparent; }
 </style>
 </head>
 <body>
-<main>
-  <a class="back" href="/weimi/">← 返回官网首页</a>
-  <header>
-    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.2.0</span></h1>
-    <p class="sub">
-      按时间倒序记录每一版改了什么，方便日后回看「某个功能是哪一版加的」。
-      下载最新版见<a href="/weimi/">官网首页</a>。
-    </p>
-  </header>
-
-  <ul class="log">
-    <li class="current">
-      <span class="ver">v1.2.1</span><span class="date">2026-10-22</span>
-      <ul class="changes">
-        <li><strong>LANDrop 发现更可靠</strong>：主动查询 + 应答双管齐下——LANDrop 先启动、或两边装在同一台电脑上，现在都能互相发现；端口被占时自动降级并定时重试抢回</li>
-        <li><strong>开机自启可只进托盘</strong>：设置→通用→桌面端新增「开机自启时进入托盘」——开机后自动运行但只留托盘图标、不弹窗口，从托盘菜单随时打开主界面（手动双击图标仍正常出窗口）</li>
-        <li><strong>与真实 LANDrop 深度对拍</strong>：发现层用真实 LANDrop 2.7.2 代码逐包对拍（查询/应答/登记/判自），局域网实测多台真实 LANDrop 设备自动发现</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.2.0</span><span class="date">2026-10-21</span>
-      <ul class="changes">
-        <li><strong>LANDrop 兼容（跨 App 互传）</strong>：与开源传输工具 LANDrop 双向互通——对方装没装微密都能传。同一 WiFi 下自动发现 LANDrop 设备（含官方 LANDrop App），飞传页三类设备统一列表显示（微密 / LocalSend / LANDrop，同 IP 自动合并），设置页可一键开关</li>
-        <li><strong>传输全程加密 + 6 位验证码</strong>：LANDrop 链路走 X25519 密钥交换 + ChaCha20-Poly1305 逐记录加密、secp256k1 身份签名；首次接收弹窗显示 6 位验证码，与对方设备当面核对，勾选信任后免确认直收（信任按设备身份公钥持久化）</li>
-        <li><strong>文件夹 / 大文件 / 中文名全支持</strong>：超过 64KB 自动分片续传，文件修改时间与权限原样恢复，拒收有明确反馈；Windows 防火墙自动放行 52637 端口（热点/公用网络不再拦）</li>
-        <li><strong>协议级质量保障</strong>：加密原语（Rust 引擎）经 libsodium 官方测试向量逐项对拍，并与真实 LANDrop 2.7.2 双向互通实测——字节、修改时间、验证码逐项断言全过</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.1.01</span><span class="date">2026-10-21</span>
-      <ul class="changes">
-        <li><strong>同批传输只确认一次</strong>：一次分享多个文件时，确认框新增「同批后续文件也按此处理」（默认勾选）——这次点接收/拒收，同一设备紧接着发来的文件就按此办理，不再逐个弹窗打扰；勾选拒收则后续直接拒，勾选接收则 2 分钟内直达</li>
-        <li><strong>连发不再连环弹窗</strong>：手机多文件并发发出时多个请求同时到达，现在只弹一个框、共用这一次决定（此前每个文件都会弹一次）</li>
-        <li><strong>整批收完只开一次目录</strong>：同一批多个文件接收完成后，只发一条汇总通知、只打开一次目标文件夹（此前每收一个文件就弹一次文件夹）；单个文件仍提示文件名，点击通知可在文件管理器中定位</li>
-        <li><strong>拒收提示也聚合</strong>：一批连拒多个文件只提示一次，可在 设置-微密飞传-信任设备 添加后请对方重发</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.1.00</span><span class="date">2026-10-20</span>
-      <ul class="changes">
-        <li><strong>文件夹加密（单文件归档）</strong>：把整个文件夹打包成一个加密归档（扩展名 <code>.wemi</code>，容器格式 <code>WEMI_FARC</code> v1），用同一个口令保护；归档内的<strong>文件名与目录结构也加密</strong>（AES-256-GCM），外人拿到归档看不到里面有什么</li>
-        <li><strong>逐文件独立分块</strong>：归档内每个文件独立加密、大文件自动分块（桌面 256MB / 手机 128MB），单个文件损坏不会影响其余文件解包，且断点可续</li>
-        <li><strong>选择性解包</strong>：解密归档时可先「列出内容」，勾选其中部分文件单独解出，不必整包解压</li>
-        <li><strong>全链路入口</strong>：电脑端把文件夹拖进窗口即打包；手机端长按文件夹「加密文件夹」、点 <code>.wemi</code> 归档走解密/选择性解包；进度实时显示，底层复用 Rust 加密引擎（与单文件加密同一套 AES-256-GCM）</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.72</span><span class="date">2026-10-19</span>
-      <ul class="changes">
-        <li>例行发版：随「微密经典版（Win7/XP 客户端）」同期，主程序安装链路与启动稳定性加固</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.71</span><span class="date">2026-10-18</span>
-      <ul class="changes">
-        <li>APK 安装链路修复，文件管理交互顺手度对齐</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.70</span><span class="date">2026-10-18</span>
-      <ul class="changes">
-        <li><strong>飞传设备合并显示修复</strong>：开着 LocalSend 兼容时，同一台设备仍可能出现两条（一条「微密+LocalSend」+ 一条纯 LocalSend），个别情况下甚至只剩 LocalSend 条目——根因是合并后的微密条目已带链路，后续每条 LocalSend 广播都又新建了一条独立设备。现在微密设备永远优先，LocalSend 只作为链路挂在微密条目上，任何时序下同 IP 最多一条；手机端微密广播因省电延迟时，合并条目也不会被清掉</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.69</span><span class="date">2026-10-18</span>
-      <ul class="changes">
-        <li><strong>双击 Ctrl 秒开浮窗</strong>：修复冷启路径约 0.5s 延迟——弹窗会话不再串行跑注册表写入、守护进程握手、飞传启动、索引加载等一整套常驻初始化，只保留必要项；UI 常驻时呼出也跳过了重复的窗口几何下发。按键检测本身 30ms 轮询不变</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.68</span><span class="date">2026-10-18</span>
-      <ul class="changes">
-        <li><strong>设备列表合并显示</strong>：同一台手机同装微密 + LocalSend 两个 App 时，电脑端只显示一条设备（副标题「微密+LocalSend」），按 IP 自动合并双链路；只装真 LocalSend App 的对端仍正常单条显示</li>
-        <li><strong>文件夹发送</strong>：设备菜单新增「发送文件夹」，自研协议按相对路径传输、保留目录结构落盘；每个顶层目录在传输记录里汇总为一条。LocalSend 对端不支持目录（协议本身无此概念），会明确提示</li>
-        <li><strong>LocalSend 兼容总开关</strong>：设置 → 微密飞传，默认开；关掉后不再广播/扫描 LocalSend 设备（隐私向兜底，不是显示开关）</li>
-        <li>传输页「网页快传」卡片改名「微密飞传-网页版」</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.67</span><span class="date">2026-10-17</span>
-      <ul class="changes">
-        <li><strong>LocalSend v2 协议互通</strong>：与开源的 LocalSend App 互收互发文件（组播发现 + HTTP 传输双通道，Android 免原生代码）。协议考古级兼容：兼容新旧两代端点名、MIME 文件类型、对端默认 HTTPS 自签证书；本机恒明文</li>
-        <li>防火墙放行范围扩到 LocalSend 端口（UDP/TCP 53317），老用户不会被误报</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.66</span><span class="date">2026-10-17</span>
-      <ul class="changes">
-        <li><strong>保险箱「打不开报密码错」根治</strong>：真实根因是缓存临时目录被系统清理后无人重建（与密码无关），底层错误码分型专错专报，不再把所有失败翻译成「密码不正确」</li>
-        <li>保险箱导入完成后询问是否删除原文件（保留/回收站/永久删除，可记住选择）</li>
-        <li>电脑右键菜单 / 手机长按多选菜单补上「解密」项（此前只有加密）</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.65</span><span class="date">2026-10-17</span>
-      <ul class="changes">
-        <li><strong>飞传防火墙助手</strong>：热点/公用网络下 Windows 防火墙默认拦入站导致对端搜不到/发不过去——传输页自动检测，一键放行（UAC 确认）或给出手动命令</li>
-        <li>多网卡环境显示全部可达 IP</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.64</span><span class="date">2026-10-17</span>
-      <ul class="changes">
-        <li><strong>指纹解锁真修复</strong>：Android BiometricPrompt 漏设取消按钮导致系统指纹框从未弹出（v1.0.57-63 全中）——补全必填项、错误码翻中文、密钥失效自清理、解锁态开开关当场录入</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.63</span><span class="date">2026-10-17</span>
-      <ul class="changes">
-        <li><strong>保险箱密码自愈链</strong>：未保存密码的文件亮「未存密码」角标、支持批量补录；忘存时先静默试主密码自动修映射，失败再弹输入框（验证通过才保存，防止错密码污染钥匙环）</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.57 – v1.0.62</span><span class="date">2026-10-15</span>
-      <ul class="changes">
-        <li><strong>保险箱正式可用</strong>（v1.0.57）：加密核心 vault 模块上船，密钥环（Argon2id + AES-256-GCM 三层封装）+ 文件密码/主密码双轨</li>
-        <li>飞传批次修复：中文目录乱码、同设备 2 分钟豁免窗、自动打开目录去重</li>
-        <li>指纹录入 UX、网页版消息时间戳、通知点击直达传输记录等一批体验修订</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.53 – v1.0.56</span><span class="date">2026-10-15</span>
-      <ul class="changes">
-        <li>保险箱初版（设置主密码 / 导入 / 三层加密）、冷启闪屏修复、视频缩略图类名修复等</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.51 – v1.0.52</span><span class="date">2026-10-15</span>
-      <ul class="changes">
-        <li>索引白名单（只索引勾选文件夹）、设置中心语法残留修复</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.49 – v1.0.50</span><span class="date">2026-10-14</span>
-      <ul class="changes">
-        <li><strong>守护进程端口释放修复</strong>：此前 UI 在后台时飞传端口永不释放、电脑搜不到手机——守护进程改为每秒重读配置 + 主动踢醒阻塞线程</li>
-        <li>快捷启动区「添加」无反应修复、网址自动补 <code>https://</code>、双击 Ctrl 加释放间隔下限（长按不误触）</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.47 – v1.0.48</span><span class="date">2026-10-14</span>
-      <ul class="changes">
-        <li><strong>后台省内存模式（守护进程）</strong>：关窗后主程序完全退出，托盘图标与飞传交给约 10MB 的守护进程；点收包通知直达传输记录</li>
-        <li>浮窗快捷区重构（常用软件/网址网格 + 图标缓存）、索引启动自检（抽样比对，腐化自动重建）</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.44 – v1.0.46</span><span class="date">2026-10-13 / 14</span>
-      <ul class="changes">
-        <li>双击 Ctrl 快捷搜索浮窗上线（一屏 9 条 + Ctrl+1..9）、索引 zlib 压缩（128MB→16MB）、托盘幽灵图标修复</li>
-        <li>缩略图大中小档位 + 横竖图不裁切；点击行为重构（加密文件直接弹密码框）；收托盘释放索引内存</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.37 – v1.0.43</span><span class="date">2026-10-10 ~ 13</span>
-      <ul class="changes">
-        <li>模块化设置框架、索引实时增量、接收保存目录与加密目录解耦、设置中心「语言」分类、目录遍历方案回退等</li>
-      </ul>
-    </li>
-    <li>
-      <span class="ver">v1.0.36 及更早</span><span class="date">2026-10-10 前</span>
-      <ul class="changes">
-        <li>早期版本：基础加解密、自有 <code>.wemi</code> 格式（兼容旧 <code>.kyl</code>）、四平台齐发、微密飞传初版、内置查看器。此后所有版本均保持同一格式，老文件一直能打开</li>
-      </ul>
-    </li>
-  </ul>
-
-  <section class="credits">
-    <h2>关于</h2>
-    <dl>
-      <dt>加密引擎</dt><dd>Rust（AES-256-GCM），经 dart:ffi 桥接</dd>
-      <dt>支持平台</dt><dd>Windows 10+ · macOS 10.15+ · Linux · Android 7.0+</dd>
-      <dt>下载</dt><dd><a href="https://pan.quark.cn/s/e60186a6d3ee" target="_blank" rel="noopener">夸克网盘</a>（各版本附 SHA256 校验）</dd>
-      <dt>其他站点</dt><dd><a href="https://weimi95.github.io/" target="_blank" rel="noopener">阿伟小站</a> · <a href="https://weimi95.github.io/wei8/" target="_blank" rel="noopener">导航站</a> · <a href="https://weimi95.github.io/weitu/" target="_blank" rel="noopener">微图相册管家</a></dd>
-    </dl>
-  </section>
-
-  <footer>
-    <p>© <span id="year"></span> 微密文件 WeiMi · Apache 2.0</p>
-  </footer>
-</main>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<header class="top">
+  <div class="bar">
+    <b>📁 微密文件管理器</b>
+    <span style="color:var(--fg2);font-size:14px">更新日志</span>
+    <span class="sp"></span>
+    <a href="index.html">产品页</a>
+    <a href="help.html">使用手册</a>
+    <a href="https://pan.quark.cn/s/72d9720b074c" target="_blank" rel="noopener">下载</a>
+  </div>
+</header>
+<div class="wrap">
+<h1>更新日志</h1>
+<p>只记录用户能感知的变化。更早的版本记录见 <a href="app-changelog.html">微密加密 App 更新日志</a>。</p>
+<section class="rel">
+<h2 id="v1-0-14">v1.0.14<span class="badge hl">最新</span></h2>
+<ul>
+<li>修复地址栏和搜索框输入文字空白、选中内容不可见的问题，保持输入、中文输入法和深浅主题下的显示稳定。</li>
+<li>修复索引更新遇到异常父目录循环时可能卡住的问题；阻止无效目录关系写入，并恢复受影响磁盘的索引。</li>
+<li>改进索引服务安装与恢复：复用已运行的服务，等待正在停止的服务，设置超时并显示实际系统错误码。</li>
+<li>修正索引服务断开连接时的状态提示，避免将已安装的全机索引误报为用户模式。</li>
+</ul>
+</section>
+<section class="rel">
+<h2 id="v1-0-13">v1.0.13<span class="badge"></span></h2>
+<ul>
+<li>修复原地重命名时输入框空白、文件名及选中态未显示的问题，保留扩展名并正确显示输入和鼠标选择结果。</li>
+<li>改进重命名提交与编辑器关闭：点击列表空白处提交，重复打开编辑器保持状态稳定，修复快速改名后退出可能卡住的问题。</li>
+<li>修复仅修改文件名大小写、非法名称与批量取消处理；同名目标不会被静默覆盖，已完成的改名仍可撤销。</li>
+<li>将重命名及新建失败提示改为顶部 toast，支持关闭、Esc、自动消失和悬停暂停；完善深浅主题、图标对齐及关闭按钮边距。</li>
+<li>感谢 Tao 在 PR #1 中提供原始调查与贡献；本版在此基础上整合了安全修复及定向验证。</li>
+</ul>
+</section>
+<section class="rel">
+<h2 id="v1-0-12">v1.0.12<span class="badge"></span></h2>
+<ul>
+<li>新增「文件夹最近变化」，默认关闭。开启后记录运行期间的变化，显示近期时间标记并可查看新增、修改、移动和删除明细；普通浏览不显示追踪状态警告。</li>
+<li>修复移到回收站后未显示删除减号的问题，并改进摘要刷新和长名称布局。</li>
+<li>搜索和过滤结果高亮命中的文件名文字；过滤框支持一键清空，点击框外结束编辑，收回动画更利落。</li>
+<li>修复过滤后因保留旧滚动位置导致列表看起来空白的问题，包括 <code>1#</code> 等含符号名称。</li>
+<li>修复桌面文件夹快捷方式显示、新建文件重命名失焦、暂存区残留已删除文件及覆盖安装索引设置问题。</li>
+<li>改进空白处返回交互，降低误触；完善本次相关定向测试。</li>
+</ul>
+</section>
+<section class="rel">
+<h2 id="v1-0-11">v1.0.11<span class="badge"></span></h2>
+<h3>预览体验</h3>
+<ul>
+<li>详情栏预览下方新增折叠入口，可展开预览区域；记住折叠状态和详情栏宽度。</li>
+<li>图片支持滚轮缩放、按住左键平移，以及双击切换适应窗口与原始大小。</li>
+<li>文本和文档支持左键拖动浏览超出预览区域的内容，滚轮继续上下浏览。</li>
+<li>区分单击与拖动：超过系统拖动阈值才接管手势，PDF 预览器的翻页按钮仍可正常点击。</li>
+<li>切换文件、松开鼠标或取消操作后停止拖动，防止延迟事件继续移动内容。</li>
+<li>折叠栏箭头保持居中，过长文件名显示省略号；移除遮挡预览的拖动提示。</li>
+</ul>
+<h3>问题修复</h3>
+<ul>
+<li>回收站仅列出当前用户且实际存在的回收项目，修复空回收站显示其他用户或残留记录的问题。</li>
+<li>修复侧栏滚动无法到底的问题，并支持拖动侧栏滚动条和点击轨道定位。</li>
+<li>「点击列表空白处回退」改为设置选项，默认关闭；搜索结果页始终不执行空白处回退。</li>
+<li>视频编码格式显示为 H.264、H.265 等可读名称，不再显示内部 GUID。</li>
+</ul>
+<h3>验证</h3>
+<ul>
+<li>本地 933 项无截图回归、36 项预览点击与拖动测试通过。</li>
+<li>发布流程分别构建、测试 Windows 10 / 11 与 Windows 8.1 兼容版，并生成签名更新清单。</li>
+<li>文档预览由系统安装的预览器提供，拖动兼容性取决于预览器对标准滚动消息的支持。</li>
+</ul>
+</section>
+<section class="rel">
+<h2 id="v1-0-10">v1.0.10<span class="badge"></span></h2>
+<h3>修复</h3>
+<ul>
+<li>修复即时搜索输入时焦点转移到隐藏菜单输入框的问题，保持连续输入、退格和中文输入不中断。</li>
+</ul>
+<ul>
+<li>修复侧栏「标签」和「网络位置」的加号功能错位：标签加号用于新建标签，网络位置加号用于添加网络位置。</li>
+<li>加号操作与分组功能直接绑定，调整分组顺序后仍保持正确。</li>
+</ul>
+<h3>验证</h3>
+<ul>
+<li>本地 737 项无截图回归通过，包含侧栏按钮命中、分组换序、即时搜索连续输入和中文输入测试。</li>
+<li>发布流程分别构建、测试 Windows 10 / 11 与 Windows 8.1 兼容版，并生成签名更新清单。</li>
+</ul>
+</section>
+<section class="rel">
+<h2 id="v1-0-9">v1.0.9<span class="badge"></span></h2>
+<h3>搜索体验</h3>
+<ul>
+<li>搜索结果随输入即时更新，继续输入、删除文字时自动刷新。</li>
+<li>新增搜索历史，支持再次搜索、筛选历史、删除单条和清空记录。</li>
+<li>优化高级搜索布局、下拉选择、扩展名筛选和条件重置。</li>
+<li>支持 Ctrl+Tab / Ctrl+Shift+Tab 切换标签。</li>
+</ul>
+<h3>修复</h3>
+<ul>
+<li>搜索结果页点击空白处不再回退，保留取消选择和框选操作。</li>
+</ul>
+<ul>
+<li>修复索引正常但部分文件无法被搜索到的问题；升级后旧索引会自动重建。</li>
+<li>修复搜索历史文字重叠、搜索范围菜单位置偏移的问题。</li>
+<li>输入框保留 LumaText 渲染，改为父窗口内的原生子控件，修复对话框关闭时残留输入框、闪烁及窗口层级异常。</li>
+<li>修复高级搜索中空输入框和输入框边缘无法点击的问题。</li>
+</ul>
+<h3>验证</h3>
+<ul>
+<li>本地构建和独立回归测试通过，搜索及对话框修复已由用户实际试用确认。</li>
+<li>发布流程分别构建和验证 Windows 10 / 11 与 Windows 8.1 安装包，运行无截图回归测试。</li>
+</ul>
+</section>
+<section class="rel">
+<h2 id="v1-0-8">v1.0.8<span class="badge"></span></h2>
+<h3>改进</h3>
+<ul>
+<li>更新清单和安装包默认使用加速下载，依次尝试 ghproxy.net、gh-proxy.com，连接失败后自动回退到 GitHub，无需设置。</li>
+<li>切换下载来源时清空未完成内容，继续验证更新清单签名和安装包 SHA-256；取消下载后不再重试。</li>
+</ul>
+<h3>修复</h3>
+<ul>
+<li>减少点击已选中文件或文件夹名称后进入重命名的额外等待，保留快速双击打开的行为。</li>
+<li>重命名命中检测和输入框布局不再触发不必要的详情查询。</li>
+</ul>
+<h3>验证</h3>
+<ul>
+<li>本地 Release 构建、更新回退测试和界面检查通过；两个加速源的在线清单签名与安装包哈希校验通过。</li>
+<li>本地 16 个测试程序中 15 个通过；操作测试仍存在此前的回收站删除失败。发布流程会对普通版和 Windows 8.1 兼容版重新构建并运行回归测试，通过后才发布。</li>
+</ul>
+</section>
+<section class="rel">
+<h2 id="v1-0-7">v1.0.7<span class="badge"></span></h2>
+<h3>改进</h3>
+<ul>
+<li>固定标签默认保留名称，支持右键重命名、恢复自动名称及选择颜色标记；设置中可切换为仅图标。</li>
+<li>分栏列表空白处单击可后退；没有历史时返回上级目录，并与框选、双击和取消操作区分。</li>
+<li>统一筛选及设置页分段控件样式，改善状态栏长文件名显示。</li>
+<li>补齐主要菜单、标签管理、文件操作对话框、设置和状态提示的中英文本地化。</li>
+<li>更新仓库中的 icon.png 图片。</li>
+</ul>
+<h3>修复</h3>
+<ul>
+<li>修复侧边栏滚动内容覆盖顶部工具栏的问题。</li>
+<li>修复子菜单颜色标记无法点击及缺少悬停反馈的问题，复用公共菜单命中逻辑。</li>
+<li>隐藏标签路径提示中的内部长路径前缀，正确显示网络共享路径。</li>
+<li>保留语言切换前的字符串引用，避免后台任务读取失效的本地化文字。</li>
+</ul>
+<h3>验证</h3>
+<ul>
+<li>本地完整自测 608 项通过，覆盖双分栏空白点击和不同缩放下的颜色子菜单交互。</li>
+<li>本地双语资源、控制器、预览及界面材质回归测试通过；补充普通、网络与长路径显示测试。</li>
+<li>第三方菜单及底层原始错误信息仍可能使用来源自身的语言。</li>
+</ul>
+</section>
+<footer>
+  <p>微密文件管理器 WeiMi · 安装包在 <a href="https://pan.quark.cn/s/72d9720b074c" target="_blank" rel="noopener">夸克网盘</a>「微密文件管理器」目录。</p>
+  <p><a href="index.html">返回产品页</a> · <a href="help.html">使用手册</a></p>
+</footer>
+</div>
 </body>
 </html>
