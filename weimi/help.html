@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微密文件管理器 · 使用手册</title>
+<meta name="description" content="微密文件管理器 WeiMi 使用手册：安装、多窗格浏览、索引搜索、快速预览、暂存盘、飞传、保险箱与文件加密、增强包、快捷键与常见问题。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📁</text></svg>">
+<style>
+:root {
+  --bg: #f7f8fa; --fg: #1b1e24; --fg2: #5b616e; --card: #ffffff;
+  --stroke: rgba(0,0,0,.08); --accent: #2f6fed; --accent2: #22a06b; --code: #eef1f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14161a; --fg: #e8eaf0; --fg2: #a5abb8; --card: #1c1f25;
+          --stroke: rgba(255,255,255,.1); --accent: #6f9dff; --accent2: #4ad295; --code: #23272e; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.75 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+header.top {
+  position: sticky; top: 0; z-index: 9; backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--stroke);
+}
+.bar { max-width: 980px; margin: 0 auto; padding: 14px 20px; display: flex;
+  align-items: center; gap: 14px; flex-wrap: wrap; }
+.bar b { font-size: 17px; }
+.bar a { color: var(--accent); text-decoration: none; font-size: 14px; }
+.bar .sp { flex: 1; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
+h1 { font-size: 30px; line-height: 1.35; margin: 8px 0 6px; }
+h2 { font-size: 21px; margin: 38px 0 10px; padding-bottom: 8px;
+     border-bottom: 1px solid var(--stroke); }
+h3 { font-size: 17px; margin: 22px 0 8px; }
+p { margin: 10px 0; color: var(--fg); }
+ul, ol { margin: 10px 0; padding-left: 24px; }
+li { margin: 6px 0; }
+hr { border: 0; border-top: 1px solid var(--stroke); margin: 30px 0; }
+a { color: var(--accent); }
+code { background: var(--code); padding: 1px 6px; border-radius: 6px;
+  font-family: "Cascadia Mono", Consolas, monospace; font-size: .92em; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 15px; }
+th, td { border: 1px solid var(--stroke); padding: 9px 12px; text-align: left; vertical-align: top; }
+th { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--fg) 3%, transparent); }
+.toc { background: var(--card); border: 1px solid var(--stroke); border-radius: 14px;
+  padding: 16px 22px; margin: 22px 0 8px; }
+.toc h2 { border: 0; margin: 0 0 8px; font-size: 16px; padding: 0; }
+.toc ol { columns: 2; column-gap: 26px; padding-left: 20px; margin: 0; }
+.toc li { font-size: 14px; }
+@media (max-width: 680px) { .toc ol { columns: 1; } h1 { font-size: 24px; } }
+footer { border-top: 1px solid var(--stroke); margin-top: 50px; padding: 22px 0 0;
+  color: var(--fg2); font-size: 14px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <b>📁 微密文件管理器</b>
+    <span style="color:var(--fg2);font-size:14px">使用手册</span>
+    <span class="sp"></span>
+    <a href="index.html">产品页</a>
+    <a href="changelog.html">更新日志</a>
+    <a href="https://pan.quark.cn/s/72d9720b074c" target="_blank" rel="noopener">下载</a>
+  </div>
+</header>
+<div class="wrap">
+<h1>微密文件管理器 使用手册</h1>
+<div class="toc"><h2>目录</h2><ol>
+<li><a href="#s1">1. 安装与第一次打开</a></li>
+<li><a href="#s2">2. 界面速览</a></li>
+<li><a href="#s3">3. 浏览与多窗格</a></li>
+<li><a href="#s4">4. 找文件</a></li>
+<li><a href="#s5">5. 快速预览</a></li>
+<li><a href="#s6">6. 标签与收藏</a></li>
+<li><a href="#s7">7. 文件操作</a></li>
+<li><a href="#s8">8. 暂存盘与文本对比</a></li>
+<li><a href="#s9">9. 飞传：电脑与手机互传</a></li>
+<li><a href="#s10">10. 保险箱与文件加密</a></li>
+<li><a href="#s11">11. 增强包</a></li>
+<li><a href="#s12-windows">12. 融入 Windows</a></li>
+<li><a href="#s13">13. 设置项速查</a></li>
+<li><a href="#s14">14. 常用快捷键</a></li>
+<li><a href="#s15">15. 自动更新</a></li>
+<li><a href="#s16">16. 常见问题</a></li>
+<li><a href="#s17">17. 反馈与支持</a></li>
+</ol></div>
+
+<p>适用版本：1.0.14 及以上｜更新日期：2026-11-14</p>
+<p>微密文件管理器（WeiMi，内核沿用 Pulse）是面向 Windows 的文件管理器：原生渲染、启动快、占用低，把多标签与多窗格浏览、全盘索引搜索、空格快速预览、暂存盘、飞传、保险箱放在同一个窗口里。</p>
+<hr>
+<h2 id="s1">1. 安装与第一次打开</h2>
+<p><strong>系统要求</strong>：Windows 11 / Windows 10（64 位）。另有 Windows 8.1 兼容版安装包。</p>
+<ol>
+<li>运行安装包 <code>WeiMiSetup-1.0.14.exe</code>，按向导完成安装。</li>
+<li>安装时可启用 <strong>PulseIndex 索引服务</strong>，用于全盘文件名与内容搜索；不启用也能正常浏览文件，只是搜索范围受限。</li>
+<li>首次启动后可在「设置 → 启动与集成」里决定是否开机启动、启动时是否恢复上次的标签页。</li>
+<li>界面提供简体中文、繁體中文、English，默认跟随 Windows 语言，可在「设置 → 显示语言」中切换。</li>
+</ol>
+<hr>
+<h2 id="s2">2. 界面速览</h2>
+<table><thead><tr><th>区域</th><th>说明</th></tr></thead><tbody>
+<tr><td>标题栏左侧</td><td>后退、前进、上级、刷新；窗口标识</td></tr>
+<tr><td>地址栏</td><td>显示并可编辑当前路径；输入 <code>cmd</code>、<code>powershell</code>、<code>pwsh</code>、<code>wt</code> 直接在当前文件夹打开终端</td></tr>
+<tr><td>搜索框</td><td>在当前文件夹或整盘搜索，支持全拼与首字母</td></tr>
+<tr><td>标题栏右侧</td><td>主题切换、<strong>飞传</strong>、<strong>设置</strong></td></tr>
+<tr><td>侧栏</td><td>快速访问、此电脑、局域网设备、标签、回收站等分区，可拖动排序与折叠</td></tr>
+<tr><td>标签页条</td><td>多标签浏览，每个标签页保留自己的布局与位置</td></tr>
+<tr><td>文件列表</td><td>平铺 / 图标 / 列表 / 详细信息 / 内容五种视图</td></tr>
+<tr><td>详情面板</td><td>预览、基本信息、标签；多选后可打开合并属性</td></tr>
+<tr><td>暂存盘</td><td>左下角，暂存复制/剪切的文件，跨文件夹批量处理</td></tr>
+</tbody></table>
+<hr>
+<h2 id="s3">3. 浏览与多窗格</h2>
+<ul>
+<li><strong>布局</strong>：<code>Ctrl+1</code> 单栏、<code>Ctrl+2</code> 左右分屏、<code>Ctrl+3</code> 上下分屏或三栏、<code>Ctrl+4</code> 四宫格。每个标签页独立记忆布局。</li>
+<li><strong>视图切换</strong>：平铺、图标、列表、详细信息、内容。每个文件夹分别记住视图、排序和分组方式。</li>
+<li><strong>分组与排序</strong>：按名称、日期、类型、大小分组；点击列标题排序，右键列标题可选择显示哪些列。</li>
+<li><strong>标签页</strong>：<code>Ctrl+T</code> 新建，<code>Ctrl+W</code> 关闭，<code>Ctrl+Tab</code> 切换；标签页可拖出成独立窗口，也可竖排在侧栏（<code>Ctrl+B</code> 收起 / 展开侧栏）。</li>
+<li><strong>文件夹对比</strong>：双栏打开两个文件夹，标出两侧不同、缺失和较新的项目；后台统计文件夹大小。</li>
+</ul>
+<hr>
+<h2 id="s4">4. 找文件</h2>
+<ul>
+<li><strong>索引搜索</strong>：由 PulseIndex 服务维护全盘索引，结果随输入实时更新；可限定「当前文件夹」或指定文件夹。</li>
+<li><strong>拼音搜索</strong>：支持全拼、首字母与多音字，例如输入 <code>sh</code> 即可找到「品牌设计」「城市夜景」等，命中文字会高亮。</li>
+<li><strong>内容搜索</strong>：覆盖文本与代码、PDF、Word、Excel、PowerPoint 等格式，结果流式加载；打开所在位置后可后退回到结果列表。</li>
+<li><strong>高级搜索</strong>：<code>Ctrl+Shift+F</code> 按类型、日期、大小等条件筛选。</li>
+<li><strong>全局快速搜索</strong>：<code>Alt+Space</code> 随时呼出，可「在主界面搜索」查看全部结果。</li>
+</ul>
+<hr>
+<h2 id="s5">5. 快速预览</h2>
+<p>选中文件按 <strong>空格</strong> 即可预览，不必打开对应软件：</p>
+<ul>
+<li>Markdown 按排版显示，代码语法高亮，PDF 逐页翻看，文件夹显示内容列表。</li>
+<li>CSV / TSV / XLSX 以表格显示；JSON / XML 显示为可折叠树；Jupyter Notebook 按单元格显示。</li>
+<li>DOCX、EPUB 与 Office 文档无需安装 Office 即可阅读；压缩包显示目录树并可在包内搜索。</li>
+<li>视频可播放、拖动与逐帧；动态 WebP / APNG 可播放；支持 SVG、PSD、AI、DWG 缩略图与字体等格式。</li>
+</ul>
+<p>指针在文件上停留片刻（默认 0.5 秒）会弹出悬停预览卡片，显示缩略图或文本摘录、类型与关键信息；卡片出现时按空格即展开为完整预览。「设置 → 快速预览」可改为仅空格预览，或调整悬停延迟与卡片尺寸。「支持的格式」一栏会检测 HEIF / HEVC / AV1 / WebP 系统扩展是否已安装。</p>
+<hr>
+<h2 id="s6">6. 标签与收藏</h2>
+<ul>
+<li>七种颜色标签可给文件和文件夹做标记，侧栏按标签汇总，也可按标签分组浏览。</li>
+<li>资源管理器右键菜单中同样可以打标签，与微密内保持一致。</li>
+<li>标签管理面板可重命名、改色、合并与清理失效标签。</li>
+</ul>
+<hr>
+<h2 id="s7">7. 文件操作</h2>
+<ul>
+<li><strong>复制 / 剪切 / 粘贴</strong>：<code>Ctrl+C</code> / <code>Ctrl+X</code> / <code>Ctrl+V</code>；复制或剪切的项目会先进入暂存盘。</li>
+<li><strong>拖放</strong>：默认复制，按住 <code>Shift</code> 为移动。</li>
+<li><strong>新建与重命名</strong>：新建文件夹 / 文件；<code>F2</code> 重命名；多选后可批量重命名（支持序号、替换、正则）。</li>
+<li><strong>删除</strong>：默认移入回收站；网络位置和可移动设备没有回收站，删除即不可恢复。</li>
+<li><strong>压缩与解压</strong>：支持 ZIP 压缩与解压，可在包内浏览与搜索。</li>
+<li><strong>文件被占用</strong>：提示占用进程，可结束进程后重试。</li>
+<li><strong>磁盘信息</strong>：「此电脑」显示磁盘类型与容量条。</li>
+</ul>
+<hr>
+<h2 id="s8">8. 暂存盘与文本对比</h2>
+<ul>
+<li>复制或剪切的文件收进左下角暂存盘，可跨文件夹、跨标签页收集后一次拖到目标位置，也可「发送到设备」或一次打开全部项目。</li>
+<li>暂存两个文件时可对照位置、修改时间、大小与内容。</li>
+<li>文本文件点「查看差异」打开对比窗口：并排 / 统一视图、行内差异高亮、仅看差异、忽略空白与大小写，<code>F7</code> / <code>Shift+F7</code> 在差异间跳转。</li>
+</ul>
+<hr>
+<h2 id="s9">9. 飞传：电脑与手机互传</h2>
+<p>飞传让电脑与手机在<strong>同一局域网</strong>内直接互传文件与文字，不经过服务器。</p>
+<p><strong>准备</strong></p>
+<ol>
+<li>电脑与手机连接同一个 Wi-Fi；Windows 网络配置需允许「网络发现」（公用网络下默认不发现设备）。</li>
+<li>手机端安装微密 App，或按电脑端提示用浏览器访问。</li>
+</ol>
+<p><strong>电脑 → 手机</strong></p>
+<ul>
+<li>点标题栏的<strong>飞传</strong>按钮打开面板，面板会自动发现附近的微密设备；选择设备后发送文件。</li>
+<li>也可以把文件拖到托盘区的飞传区域（「飞传 · 拖到这里，选人后发送」），再选择接收人。</li>
+<li>暂存盘里的多个文件可一并发送：右键暂存盘 →「发送到设备…」。</li>
+</ul>
+<p><strong>手机 → 电脑</strong></p>
+<p>手机端选择电脑发送后，电脑端飞传面板会收到文件，可直接保存到当前文件夹。</p>
+<p><strong>文字互发</strong></p>
+<p>飞传面板底部输入框可直接发送文字，右下角按钮为发送键；消息以气泡显示，记录超过一屏时可滚动查看。</p>
+<p><strong>找不到设备时</strong></p>
+<ul>
+<li>确认两端在同一网段，Windows 网络未被标记为「公用网络」。</li>
+<li>「设置 → 自动发现局域网设备」保持开启；必要时在「局域网发现设置…」中检查网络发现与防火墙。</li>
+<li>手机与 Windows 设备的配对提示需要点「允许」。</li>
+</ul>
+<hr>
+<h2 id="s10">10. 保险箱与文件加密</h2>
+<p>微密提供两种隐私保护方式，密码均由 Windows 保护存储，只保存在本机。</p>
+<p><strong>保险箱</strong></p>
+<ul>
+<li>第一次「加入保险箱…」时设置主密码；之后打开保险箱需输入该密码。</li>
+<li>右键文件 →「加入保险箱…」，文件加密后放入保险箱；保险箱位置可更改（箱内文件与主密码一并迁移）。</li>
+<li>主密码可更改；<strong>主密码丢失后箱内文件无法打开</strong>，请妥善保管。</li>
+</ul>
+<p><strong>单个文件加密</strong></p>
+<ul>
+<li>右键 →「用微密加密…」，为所选文件设置密码，生成 <code>.wemi</code> 加密文件；可勾选「加密成功后删除原文件」。</li>
+<li>解密时输入加密时使用的密码；<strong>密码丢失后文件无法恢复</strong>。</li>
+</ul>
+<hr>
+<h2 id="s11">11. 增强包</h2>
+<p>「设置 → 增强包」提供可选组件（如 ffmpeg 解码、图片格式、RAW、压缩包、AI 与 MCP 等），按需下载安装即可启用对应的预览或处理能力。</p>
+<ul>
+<li>点「下载并安装」，程序从官网增强包源直连下载并校验后安装。</li>
+<li>官网下载失败时，可在「增强包备用下载」（网盘）手动取得对应 <code>.lzms</code> 文件，放进 <code>%LOCALAPPDATA%\weimi-desktop\packs\incoming\包名</code>（如 <code>ffmpeg</code>、<code>images</code>、<code>raw</code>、<code>archive</code>），再回到本页点「下载并安装」离线安装。</li>
+</ul>
+<hr>
+<h2 id="s12-windows">12. 融入 Windows</h2>
+<ul>
+<li><strong>设为默认文件管理器</strong>：用于打开文件夹、<code>Win+E</code> 与桌面「此电脑」；「打开文件所在位置」会在微密中选中文件。随时可关闭，恢复原样。</li>
+<li><strong>右键菜单</strong>：合并资源管理器与 Windows 11 新式菜单项（如 VS Code、Windows Terminal、NanaZip 等），微密自带项可隐藏。</li>
+<li><strong>开机启动</strong>：可启动到托盘，并设置默认打开的文件夹。</li>
+<li><strong>托盘</strong>：右键托盘图标可处理暂存盘项目、打开全部、定位到文件夹、对比、清空暂存区，以及「使用手册」与「关于与诊断」。</li>
+<li><strong>设置按钮右键</strong>：在标题栏设置按钮上点右键，可直接打开设置、使用手册或关于页。</li>
+</ul>
+<hr>
+<h2 id="s13">13. 设置项速查</h2>
+<table><thead><tr><th>设置页</th><th>主要内容</th></tr></thead><tbody>
+<tr><td>外观</td><td>主题（浅色 / 深色 / 跟随系统）、主题色、窗口效果（亚克力 / Mica）、壁纸与透明度、行高、文字渲染</td></tr>
+<tr><td>搜索与索引</td><td>索引服务状态与安装、搜索范围、内容搜索开关</td></tr>
+<tr><td>右键菜单</td><td>资源管理器与 Windows 11 菜单合并、微密菜单项显隐</td></tr>
+<tr><td>增强包</td><td>组件下载与安装、离线包与备用下载</td></tr>
+<tr><td>快速预览</td><td>预览方式、悬停延迟、卡片尺寸、支持的格式</td></tr>
+<tr><td>快捷键</td><td>全部快捷键一览与冲突检查</td></tr>
+<tr><td>系统右键菜单</td><td>系统集成相关的菜单项</td></tr>
+<tr><td>文件列表</td><td>视图、分组、日期显示、列显示</td></tr>
+<tr><td>标签页与窗口</td><td>标签页行为、竖排标签、窗口恢复</td></tr>
+<tr><td>启动与集成</td><td>开机启动、默认文件管理器、默认位置、自动发现局域网设备</td></tr>
+<tr><td>文件操作</td><td>删除确认、复制冲突处理、压缩解压选项</td></tr>
+<tr><td>关于与诊断</td><td>版本信息、检查更新、复制诊断信息、项目主页、使用手册</td></tr>
+</tbody></table>
+<hr>
+<h2 id="s14">14. 常用快捷键</h2>
+<table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody>
+<tr><td><code>Ctrl+T</code> / <code>Ctrl+W</code></td><td>新建标签页 / 关闭标签页</td></tr>
+<tr><td><code>Ctrl+Tab</code></td><td>切换标签页</td></tr>
+<tr><td><code>Ctrl+1</code> / <code>2</code> / <code>3</code> / <code>4</code></td><td>单栏 / 左右分屏 / 上下分屏（三栏）/ 四宫格</td></tr>
+<tr><td><code>Ctrl+B</code></td><td>收起或展开侧栏</td></tr>
+<tr><td><code>Ctrl+Shift+F</code></td><td>高级搜索</td></tr>
+<tr><td><code>Alt+Space</code></td><td>全局快速搜索</td></tr>
+<tr><td><code>F2</code></td><td>重命名</td></tr>
+<tr><td><code>F5</code></td><td>刷新</td></tr>
+<tr><td><code>空格</code></td><td>快速预览</td></tr>
+<tr><td><code>F7</code> / <code>Shift+F7</code></td><td>文本对比中跳到下一处 / 上一处差异</td></tr>
+<tr><td><code>Ctrl+C</code> / <code>Ctrl+X</code> / <code>Ctrl+V</code></td><td>复制 / 剪切 / 粘贴（进入暂存盘）</td></tr>
+</tbody></table>
+<p>完整列表见「设置 → 快捷键」。</p>
+<hr>
+<h2 id="s15">15. 自动更新</h2>
+<p>微密会在启动后自动检查新版，窗口内出现提示后点击即可下载安装包，校验通过后打开安装向导。也可在「设置 → 关于与诊断」手动检查更新；不想收到提醒时，在同一页关闭「自动检查更新」。</p>
+<p>更新清单与安装包默认依次尝试加速源，连接失败自动切换，最后回退到 GitHub，无需设置；所有来源均须通过签名与安装包校验。1.0.14 起可在官网「更新日志」页查看每个版本的变化。</p>
+<hr>
+<h2 id="s16">16. 常见问题</h2>
+<p><strong>手机通过 USB 连上电脑却看不到？</strong></p>
+<p>解锁手机，下拉通知栏，点「USB 用于…」，选「文件传输」（有的手机叫「传输文件 / MTP」）；弹出「允许访问设备数据吗」时选「允许」；仍不行就换一根能传数据的线或换 USB 口，有些线只能充电。连好后会自动出现，不用刷新。</p>
+<p><strong>飞传看不到设备？</strong></p>
+<p>两端须在同一局域网；Windows 网络不能是「公用网络」；确认「设置 → 自动发现局域网设备」已开启；检查防火墙是否阻止了网络发现。</p>
+<p><strong>搜索没有结果？</strong></p>
+<p>确认 PulseIndex 索引服务已安装并完成首次索引；未建立索引时只能在当前文件夹内搜索。</p>
+<p><strong>预览是空白或提示缺少格式？</strong></p>
+<p>Office 等格式依赖增强包，按提示安装对应组件；HEIF / HEVC / AV1 / WebP 需要在系统安装对应扩展（「设置 → 快速预览 · 支持的格式」可检测）。</p>
+<p><strong>增强包下载失败？</strong></p>
+<p>多为网络或官网源不可达：改用「增强包备用下载」手动放包后离线安装（见第 11 节）。</p>
+<p><strong>忘记保险箱主密码或加密密码？</strong></p>
+<p>密码只保存在本机且不可找回，箱内文件与 <code>.wemi</code> 文件将无法打开，请另行备份并妥善保管密码。</p>
+<hr>
+<h2 id="s17">17. 反馈与支持</h2>
+<ul>
+<li>项目主页：<a href="https://weimi95.github.io/weimi/" target="_blank" rel="noopener">https://weimi95.github.io/weimi/</a></li>
+<li>更新日志：<a href="https://weimi95.github.io/weimi/changelog.html" target="_blank" rel="noopener">https://weimi95.github.io/weimi/changelog.html</a></li>
+<li>问题反馈：应用内「设置 → 关于与诊断 → 复制诊断信息」，连同问题描述一并提供，便于定位。</li>
+</ul>
+<footer>
+  <p>微密文件管理器 WeiMi · 手册随版本更新，最新版以本页为准。</p>
+  <p><a href="index.html">返回产品页</a> · <a href="changelog.html">更新日志</a></p>
+</footer>
+</div>
+</body>
+</html>
