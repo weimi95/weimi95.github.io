@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "version": "1.0.14",
+  "minimum_windows_build": 19045,
+  "download_page": "https://weimi95.github.io/weimi/downloads/WeiMiSetup-1.0.14.exe",
+  "installer_sha256": "7d6315da8e7ec3de6ac52178a9c288d52a8847afd73afe905d9ab1d900795d24",
+  "signature": "BGqDH3V+DsypNDYUzBAMIedYQnD+7X0k/BRcf+DUvQQj0TybDYOcaLSnNyIhhWSwk1y9F8w2xPzLNB2K5AtYKQ=="
+}
