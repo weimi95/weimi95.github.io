@@ -131,7 +131,7 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 <main>
   <a class="back" href="/weimi/">← 返回官网首页</a>
   <header>
-    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.2.0</span></h1>
+    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.2.44</span></h1>
     <p class="sub">
       按时间倒序记录每一版改了什么，方便日后回看「某个功能是哪一版加的」。
       下载最新版见<a href="/weimi/">官网首页</a>。
@@ -140,6 +140,17 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 
   <ul class="log">
     <li class="current">
+      <span class="ver">v1.2.44</span><span class="date">2026-11-15</span>
+      <ul class="changes">
+        <li><strong>飞传与新版电脑端互通（重点）</strong>：手机端与全新 Rust 引擎电脑端现在可以<strong>双向收发文字与文件</strong>。修复 TLS 加密通道不匹配、文字发送被误拦截、旧自研接口失效、设备合并时字段错位四类问题；已真机验收通过</li>
+        <li><strong>联网不再卡死</strong>：停用会打满主线程的 LocalSend 全网段盲扫，改为 15 秒组播宣告 + 组播包节流；诊断日志可一键复制导出，排查问题时直接给时序</li>
+        <li><strong>网页快传换新后端</strong>：同 WiFi 浏览器打开 <code>http://手机IP:52360</code> 即可使用，界面与电脑端网页版一致；支持网页收发到本机、网页↔网页互传、网页转发到局域网设备，接收前统一弹确认卡</li>
+        <li><strong>协议主辅分级</strong>：设备列表改为 LocalSend 为主、LANDrop 为辅、旧微密协议排最后；扫描改为小批量让出主线程，切换页面更跟手</li>
+        <li><strong>信任记录清理</strong>：旧自研协议遗留的设备信任记录一次性作废，保留 LocalSend 指纹与 LANDrop 身份公钥；首次与新电脑端互传重新走一次确认卡即可</li>
+        <li><strong>其他</strong>：列头分隔线、文件夹右键菜单与文件夹收发、全盘索引带文件元数据（搜索结果不再逐个读盘，秒级出结果）、保险箱多选与通知横幅等近四十项改进一并包含</li>
+      </ul>
+    </li>
+    <li>
       <span class="ver">v1.2.1</span><span class="date">2026-10-22</span>
       <ul class="changes">
         <li><strong>LANDrop 发现更可靠</strong>：主动查询 + 应答双管齐下——LANDrop 先启动、或两边装在同一台电脑上，现在都能互相发现；端口被占时自动降级并定时重试抢回</li>
