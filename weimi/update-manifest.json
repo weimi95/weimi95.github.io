@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "version": "1.0.14",
+  "version": "1.0.15",
   "minimum_windows_build": 19045,
-  "download_page": "https://weimi95.github.io/weimi/downloads/WeiMiSetup-1.0.14.exe",
-  "installer_sha256": "7d6315da8e7ec3de6ac52178a9c288d52a8847afd73afe905d9ab1d900795d24",
-  "signature": "HzHmh1cSuBRRXAUFZlm8YJWnFsfY0GLcrXH7Ser0UIm5Kqb8kmZYEqrqaHzAGLCXw7eSVtTrV/SC/onUF7/0Nw=="
+  "download_page": "https://weimi95.github.io/weimi/downloads/WeiMiSetup-1.0.15.exe",
+  "installer_sha256": "0271f6149e99c40761a6de55359005679c804760eb7d0afc0a9e364ba494ce6d",
+  "signature": "+hi4RrQ6lX/6Pgh+m0mZOassswErQ0hN8Xw/Ih2ab27fi8FKHaOCWg8lX79XGnx+mPCGd+7GYSIGy7z+YJRvtA=="
 }
