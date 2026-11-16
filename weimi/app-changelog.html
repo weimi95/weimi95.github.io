@@ -131,7 +131,7 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 <main>
   <a class="back" href="/weimi/">← 返回官网首页</a>
   <header>
-    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.2.44</span></h1>
+    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.2.45</span></h1>
     <p class="sub">
       按时间倒序记录每一版改了什么，方便日后回看「某个功能是哪一版加的」。
       下载最新版见<a href="/weimi/">官网首页</a>。
@@ -140,6 +140,15 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 
   <ul class="log">
     <li class="current">
+      <span class="ver">v1.2.45</span><span class="date">2026-11-16</span>
+      <ul class="changes">
+        <li><strong>网页端跨机互传（重点）</strong>：手机网页端与电脑网页端现在可以<strong>直接互传文字与文件</strong>，与新版电脑端 1.0.15 的网页版机制对齐。同一 WiFi 下，两边各自开着网页快传页，就能看到对方并发起传输</li>
+        <li><strong>发现「另一台电脑」</strong>：远端网页页面会聚合进设备列表并标注「另一台电脑」，开关网页页即可秒级上线/下线，不依赖额外 App</li>
+        <li><strong>文字跨机直推</strong>：选中另一台电脑的网页直接发文字，对方页面即时收到，不弹确认卡、不写入传输记录；目标页面已关闭会明确提示对方不在线</li>
+        <li><strong>文件跨机直传</strong>：发送方网页上传后由本机边收边中转给对方，不落盘、不占中间存储；传输中断会给出明确提示，避免「以为传完了」</li>
+      </ul>
+    </li>
+    <li>
       <span class="ver">v1.2.44</span><span class="date">2026-11-15</span>
       <ul class="changes">
         <li><strong>飞传与新版电脑端互通（重点）</strong>：手机端与全新 Rust 引擎电脑端现在可以<strong>双向收发文字与文件</strong>。修复 TLS 加密通道不匹配、文字发送被误拦截、旧自研接口失效、设备合并时字段错位四类问题；已真机验收通过</li>
