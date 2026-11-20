@@ -131,7 +131,7 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 <main>
   <a class="back" href="/weimi/">← 返回官网首页</a>
   <header>
-    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.2.46</span></h1>
+    <h1>微密文件 <span class="grad">WeiMi</span> · 更新日志<span class="badge">v1.2.47</span></h1>
     <p class="sub">
       按时间倒序记录每一版改了什么，方便日后回看「某个功能是哪一版加的」。
       下载最新版见<a href="/weimi/">官网首页</a>。
@@ -140,6 +140,15 @@ footer { margin-top: 2.6rem; color: var(--muted); font-size: 0.88rem; }
 
   <ul class="log">
     <li class="current">
+      <span class="ver">v1.2.47</span><span class="date">2026-11-20</span>
+      <ul class="changes">
+        <li><strong>修复「能发现、发不出」（重点）</strong>：电脑连手机热点、或手机同时开 WiFi + 移动数据 + 热点时，多网卡出口选错导致对方收不到消息。现在发送会自动按对方网段锁定正确的本机网卡出口</li>
+        <li><strong>手动指定本机网卡（兜底）</strong>：自动挑错 IP 时，在飞传页点「本机网卡」手动勾选正确网卡；公布地址、发现包、发送源三处同时生效，对齐新版电脑端 1.0.20 的网卡策略</li>
+        <li><strong>自动过滤虚拟网卡</strong>：VPN / 隧道地址不再被当成对外地址；同一 ZeroTier 组网内互传可手动打开开关</li>
+        <li>绑定失败自动回退系统默认路由，行为不比旧版差</li>
+      </ul>
+    </li>
+    <li>
       <span class="ver">v1.2.46</span><span class="date">2026-11-16</span>
       <ul class="changes">
         <li><strong>检查更新（本次新增）</strong>：关于页新增「检查更新」按钮，点一下即可看到当前最新版本、本次更新说明，并一键跳转到夸克网盘下载。不再需要到处找版本号——以后发新版只需更新官网一份配置，App 内即可感知</li>
